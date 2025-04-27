@@ -72,7 +72,7 @@ const FeedScreen = () => {
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      loadPosts(); // Reload posts every time screen focuses
+      loadPosts();
     });
     return unsubscribe;
   }, [navigation]);

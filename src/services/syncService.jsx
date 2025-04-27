@@ -11,7 +11,7 @@ export const syncPosts = async dispatch => {
 
     const unsyncedPosts = localPosts.filter(post => post.synced === 0);
 
-    if (unsyncedPosts.length === 0) return; // No posts to sync
+    if (unsyncedPosts.length === 0) return;
 
     for (const post of unsyncedPosts) {
       try {
@@ -27,7 +27,6 @@ export const syncPosts = async dispatch => {
       }
     }
 
-    // 🎉 Show success toast
     Toast.show({
       type: 'success',
       text1: 'Posts Synced',

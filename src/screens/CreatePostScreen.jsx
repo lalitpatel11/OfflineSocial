@@ -25,14 +25,11 @@ const CreatePostScreen = () => {
     };
 
     try {
-      // Save in Redux (for UI)
       dispatch(addPost({content}));
 
-      // Save in SQLite
       const db = await getDBConnection();
       await insertPost(db, newPost);
 
-      // Clear input and go back
       setContent('');
       navigation.goBack();
     } catch (error) {

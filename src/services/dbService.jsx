@@ -2,12 +2,10 @@ import SQLite from 'react-native-sqlite-storage';
 
 SQLite.enablePromise(true);
 
-// Open or create DB
 const getDBConnection = async () => {
   return SQLite.openDatabase({name: 'posts.db', location: 'default'});
 };
 
-// Create posts table
 const createTables = async db => {
   const query = `CREATE TABLE IF NOT EXISTS posts (
     id TEXT PRIMARY KEY,
@@ -18,7 +16,6 @@ const createTables = async db => {
   await db.executeSql(query);
 };
 
-// Insert a post
 const insertPost = async (db, post) => {
   const insertQuery = `INSERT INTO posts (id, content, created_at, synced) VALUES (?, ?, ?, ?);`;
   await db.executeSql(insertQuery, [
@@ -29,7 +26,6 @@ const insertPost = async (db, post) => {
   ]);
 };
 
-// Fetch all posts
 const getPosts = async db => {
   try {
     const posts = [];
@@ -48,7 +44,6 @@ const getPosts = async db => {
   }
 };
 
-// Update post sync status
 const markPostAsSynced = async (db, id) => {
   const updateQuery = `UPDATE posts SET synced = 1 WHERE id = ?;`;
   await db.executeSql(updateQuery, [id]);

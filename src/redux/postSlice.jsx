@@ -4,15 +4,15 @@ import uuid from 'react-native-uuid';
 const postSlice = createSlice({
   name: 'posts',
   initialState: {
-    posts: [], // All posts (local + synced)
+    posts: [],
   },
   reducers: {
     addPost: (state, action) => {
       const newPost = {
-        id: uuid.v4(), // generate unique ID
+        id: uuid.v4(),
         content: action.payload.content,
         created_at: new Date().toISOString(),
-        synced: false, // new posts are initially not synced
+        synced: false,
       };
       state.posts.unshift(newPost);
     },

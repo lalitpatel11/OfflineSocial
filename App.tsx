@@ -29,7 +29,6 @@ const MainApp = () => {
 const App = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    // Simulate loading for 2 seconds
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);
